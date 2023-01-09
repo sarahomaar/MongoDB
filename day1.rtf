@@ -1,0 +1,265 @@
+{\rtf1\fbidis\ansi\ansicpg1256\deff0\nouicompat\deflang3073{\fonttbl{\f0\fnil\fcharset0 Calibri;}}
+{\*\generator Riched20 6.3.9600}\viewkind4\uc1 
+\pard\ltrpar\sa200\sl276\slmult1\f0\fs22\lang9 use mydb\par
+'switched to db mydb'\par
+db.createCollection("product")\par
+\{ ok: 1 \}\par
+db.product.insert(\{"order":"o1","year":2020,"paid":"Y","cost":\{"price":30,"currency":"NOK"\}, \par
+\par
+"items":[\{"product":"p1","colours":["blue","black"],"quantity":15\}],"delivery_days":5\})\par
+'DeprecationWarning: Collection.insert() is deprecated. Use insertOne, insertMany, or bulkWrite.'\par
+\{ acknowledged: true,\par
+  insertedIds: \{ '0': ObjectId("63b46ee0f5a3655563abd5c3") \} \}\par
+db.product.insert(\{"order":"o2","year":2020,"paid":"Y","cost":\{"price":13,"currency":"EUR"\}, \par
+\par
+"items":[\{"product":"p2","colours":["white"],"quantity":4\}, \par
+\par
+\{"product":"p3","colours":["white","black"],"quantity":1\}],"delivery_days":4\})\par
+\{ acknowledged: true,\par
+  insertedIds: \{ '0': ObjectId("63b46fa0f5a3655563abd5c4") \} \}\par
+db.product.insert(\{"order":"o3","year":2018,"paid":"N","cost":\{"price":33,"currency":"EUR"\}, \par
+\par
+"items":[\{"product":"p3","colours":["blue","black"],"quantity":4\}], "delivery_days":4\})\par
+\{ acknowledged: true,\par
+  insertedIds: \{ '0': ObjectId("63b47055f5a3655563abd5c5") \} \}\par
+db.product.insert(\{"order":"o4","year":2017,"paid":"Y","cost":\{"price":17,"currency":"NOK"\}, \par
+\par
+"items":[\{"product":"p2","colours":["pink","black"],"quantity":14\}, \par
+\par
+\{"product":"p4","colours":["white"],"quantity":1\}], "delivery_days":2\})\par
+\{ acknowledged: true,\par
+  insertedIds: \{ '0': ObjectId("63b47074f5a3655563abd5c6") \} \}\par
+db.product.insert(\{"order":"o5","year":2020,"paid":"Y","cost":\{"price":19,"currency":"NOK"\}, "items":[\{"product":"p1","quantity":15\}], "delivery_days":3\} )\par
+\{ acknowledged: true,\par
+  insertedIds: \{ '0': ObjectId("63b47092f5a3655563abd5c7") \} \}\par
+db.product.find()\par
+\{ _id: ObjectId("63b46ee0f5a3655563abd5c3"),\par
+  order: 'o1',\par
+  year: 2020,\par
+  paid: 'Y',\par
+  cost: \{ price: 30, currency: 'NOK' \},\par
+  items: [ \{ product: 'p1', colours: [ 'blue', 'black' ], quantity: 15 \} ],\par
+  delivery_days: 5 \}\par
+\{ _id: ObjectId("63b46fa0f5a3655563abd5c4"),\par
+  order: 'o2',\par
+  year: 2020,\par
+  paid: 'Y',\par
+  cost: \{ price: 13, currency: 'EUR' \},\par
+  items: \par
+   [ \{ product: 'p2', colours: [ 'white' ], quantity: 4 \},\par
+     \{ product: 'p3', colours: [ 'white', 'black' ], quantity: 1 \} ],\par
+  delivery_days: 4 \}\par
+\{ _id: ObjectId("63b47055f5a3655563abd5c5"),\par
+  order: 'o3',\par
+  year: 2018,\par
+  paid: 'N',\par
+  cost: \{ price: 33, currency: 'EUR' \},\par
+  items: [ \{ product: 'p3', colours: [ 'blue', 'black' ], quantity: 4 \} ],\par
+  delivery_days: 4 \}\par
+\{ _id: ObjectId("63b47074f5a3655563abd5c6"),\par
+  order: 'o4',\par
+  year: 2017,\par
+  paid: 'Y',\par
+  cost: \{ price: 17, currency: 'NOK' \},\par
+  items: \par
+   [ \{ product: 'p2', colours: [ 'pink', 'black' ], quantity: 14 \},\par
+     \{ product: 'p4', colours: [ 'white' ], quantity: 1 \} ],\par
+  delivery_days: 2 \}\par
+\{ _id: ObjectId("63b47092f5a3655563abd5c7"),\par
+  order: 'o5',\par
+  year: 2020,\par
+  paid: 'Y',\par
+  cost: \{ price: 19, currency: 'NOK' \},\par
+  items: [ \{ product: 'p1', quantity: 15 \} ],\par
+  delivery_days: 3 \}\par
+db.product.find(\{paid:"Y"\})\par
+\{ _id: ObjectId("63b46ee0f5a3655563abd5c3"),\par
+  order: 'o1',\par
+  year: 2020,\par
+  paid: 'Y',\par
+  cost: \{ price: 30, currency: 'NOK' \},\par
+  items: [ \{ product: 'p1', colours: [ 'blue', 'black' ], quantity: 15 \} ],\par
+  delivery_days: 5 \}\par
+\{ _id: ObjectId("63b46fa0f5a3655563abd5c4"),\par
+  order: 'o2',\par
+  year: 2020,\par
+  paid: 'Y',\par
+  cost: \{ price: 13, currency: 'EUR' \},\par
+  items: \par
+   [ \{ product: 'p2', colours: [ 'white' ], quantity: 4 \},\par
+     \{ product: 'p3', colours: [ 'white', 'black' ], quantity: 1 \} ],\par
+  delivery_days: 4 \}\par
+\{ _id: ObjectId("63b47074f5a3655563abd5c6"),\par
+  order: 'o4',\par
+  year: 2017,\par
+  paid: 'Y',\par
+  cost: \{ price: 17, currency: 'NOK' \},\par
+  items: \par
+   [ \{ product: 'p2', colours: [ 'pink', 'black' ], quantity: 14 \},\par
+     \{ product: 'p4', colours: [ 'white' ], quantity: 1 \} ],\par
+  delivery_days: 2 \}\par
+\{ _id: ObjectId("63b47092f5a3655563abd5c7"),\par
+  order: 'o5',\par
+  year: 2020,\par
+  paid: 'Y',\par
+  cost: \{ price: 19, currency: 'NOK' \},\par
+  items: [ \{ product: 'p1', quantity: 15 \} ],\par
+  delivery_days: 3 \}\par
+\par
+db.product.find(\{"cost.currency":"NOK"\})\par
+\{ _id: ObjectId("63b46ee0f5a3655563abd5c3"),\par
+  order: 'o1',\par
+  year: 2020,\par
+  paid: 'Y',\par
+  cost: \{ price: 30, currency: 'NOK' \},\par
+  items: [ \{ product: 'p1', colours: [ 'blue', 'black' ], quantity: 15 \} ],\par
+  delivery_days: 5 \}\par
+\{ _id: ObjectId("63b47074f5a3655563abd5c6"),\par
+  order: 'o4',\par
+  year: 2017,\par
+  paid: 'Y',\par
+  cost: \{ price: 17, currency: 'NOK' \},\par
+  items: \par
+   [ \{ product: 'p2', colours: [ 'pink', 'black' ], quantity: 14 \},\par
+     \{ product: 'p4', colours: [ 'white' ], quantity: 1 \} ],\par
+  delivery_days: 2 \}\par
+\{ _id: ObjectId("63b47092f5a3655563abd5c7"),\par
+  order: 'o5',\par
+  year: 2020,\par
+  paid: 'Y',\par
+  cost: \{ price: 19, currency: 'NOK' \},\par
+  items: [ \{ product: 'p1', quantity: 15 \} ],\par
+  delivery_days: 3 \}\par
+db.product.find(\{"items.product":"p2"\})\par
+\{ _id: ObjectId("63b46fa0f5a3655563abd5c4"),\par
+  order: 'o2',\par
+  year: 2020,\par
+  paid: 'Y',\par
+  cost: \{ price: 13, currency: 'EUR' \},\par
+  items: \par
+   [ \{ product: 'p2', colours: [ 'white' ], quantity: 4 \},\par
+     \{ product: 'p3', colours: [ 'white', 'black' ], quantity: 1 \} ],\par
+  delivery_days: 4 \}\par
+\{ _id: ObjectId("63b47074f5a3655563abd5c6"),\par
+  order: 'o4',\par
+  year: 2017,\par
+  paid: 'Y',\par
+  cost: \{ price: 17, currency: 'NOK' \},\par
+  items: \par
+   [ \{ product: 'p2', colours: [ 'pink', 'black' ], quantity: 14 \},\par
+     \{ product: 'p4', colours: [ 'white' ], quantity: 1 \} ],\par
+  delivery_days: 2 \}\par
+/////////////////////////////////////////////////////////////////////////////////\par
+use facultySystemDB\par
+'switched to db facultySystemDB'\par
+db.createCollection("student")\par
+\{ ok: 1 \}\par
+db.student.insertOne(\{"FirstName":"Sarah","LastName":"omar","Age":"23","Faculty":\{"Name":"bis","Address":"zamalek"\},\par
+"Grade":[\{"CourseName":"db","Grade":"A","Pass":true\},\{"CourseName":"Acc","Grade":"A","Pass":true\},\par
+\{"CourseName":"network","Grade":"A","Pass":true\}],"isFired":false\})\par
+\{ acknowledged: true,\par
+  insertedId: ObjectId("63b49a6e53813d020a529a44") \}\par
+///\par
+db.student.insertMany([\{\par
+"FirstName":"Ahmed",\par
+"LastName":"Ayman",\par
+"Age":"23","Faculty":\{"Name":"cs","Address":"nasr city"\},\par
+"Grade":[\{"CourseName":"math","Grade":"C","Pass":true\},\{"CourseName":"prog","Grade":"D","Pass":true\},\{"CourseName":"os","Grade":"F","Pass":false\}],\par
+"isFired":false\},\par
+\{\par
+"FirstName":"omar",\par
+"LastName":"abdelaziz",\par
+"Age":"24",\par
+"Faculty":\{"Name":"bis","Address":"zamalek"\},\par
+"Grade":[\{"CourseName":"os","Grade":"F","Pass":false \},\{"CourseName":"math","Grade":"A+","Pass":true\},\{"CourseName":"prog","Grade":"D","Pass":true\}],\par
+"isFired":false \}])\par
+\{ acknowledged: true,\par
+  insertedIds: \par
+   \{ '0': ObjectId("63b49c6653813d020a529a45"),\par
+     '1': ObjectId("63b49c6653813d020a529a46") \} \}\par
+///\par
+db.student.find()\par
+\{ _id: ObjectId("63b49a6e53813d020a529a44"),\par
+  FirstName: 'Sarah',\par
+  LastName: 'omar',\par
+  Age: '23',\par
+  Faculty: \{ Name: 'bis', Address: 'zamalek' \},\par
+  Grade: \par
+   [ \{ CourseName: 'db', Grade: 'A', Pass: true \},\par
+     \{ CourseName: 'Acc', Grade: 'A', Pass: true \},\par
+     \{ CourseName: 'network', Grade: 'A', Pass: true \} ],\par
+  isFired: false \}\par
+\{ _id: ObjectId("63b49c6653813d020a529a45"),\par
+  FirstName: 'Ahmed',\par
+  LastName: 'Ayman',\par
+  Age: '23',\par
+  Faculty: \{ Name: 'cs', Address: 'nasr city' \},\par
+  Grade: \par
+   [ \{ CourseName: 'math', Grade: 'C', Pass: true \},\par
+     \{ CourseName: 'prog', Grade: 'D', Pass: true \},\par
+     \{ CourseName: 'os', Grade: 'F', Pass: false \} ],\par
+  isFired: false \}\par
+\{ _id: ObjectId("63b49c6653813d020a529a46"),\par
+  FirstName: 'omar',\par
+  LastName: 'abdelaziz',\par
+  Age: '24',\par
+  Faculty: \{ Name: 'bis', Address: 'zamalek' \},\par
+  Grade: \par
+   [ \{ CourseName: 'os', Grade: 'F', Pass: false \},\par
+     \{ CourseName: 'math', Grade: 'A+', Pass: true \},\par
+     \{ CourseName: 'prog', Grade: 'D', Pass: true \} ],\par
+  isFired: false \}\par
+////\par
+db.student.find(\{"FirstName":"Sarah"\})\par
+\{ _id: ObjectId("63b49a6e53813d020a529a44"),\par
+  FirstName: 'Sarah',\par
+  LastName: 'omar',\par
+  Age: '23',\par
+  Faculty: \{ Name: 'bis', Address: 'zamalek' \},\par
+  Grade: \par
+   [ \{ CourseName: 'db', Grade: 'A', Pass: true \},\par
+     \{ CourseName: 'Acc', Grade: 'A', Pass: true \},\par
+     \{ CourseName: 'network', Grade: 'A', Pass: true \} ],\par
+  isFired: false \}\par
+//\par
+db.student.updateOne(\{"FirstName":"Sarah"\},\{$set:\{"isFired":true\}\})\par
+\{ acknowledged: true,\par
+  insertedId: null,\par
+  matchedCount: 1,\par
+  modifiedCount: 0,\par
+  upsertedCount: 0 \}\par
+///\par
+db.student.find(\{"isFired":true\})\par
+\{ _id: ObjectId("63b49a6e53813d020a529a44"),\par
+  FirstName: 'Sarah',\par
+  LastName: 'omar',\par
+  Age: '23',\par
+  Faculty: \{ Name: 'bis', Address: 'zamalek' \},\par
+  Grade: \par
+   [ \{ CourseName: 'db', Grade: 'A', Pass: true \},\par
+     \{ CourseName: 'Acc', Grade: 'A', Pass: true \},\par
+     \{ CourseName: 'network', Grade: 'A', Pass: true \} ],\par
+  isFired: true \}\par
+//display\par
+db.student.find(\{\},\{ "FirstName": 1,"LastName":1,"isFired":1,_id:0\})\par
+\{ FirstName: 'Sarah', LastName: 'omar', isFired: true \}\par
+\{ FirstName: 'Ahmed', LastName: 'Ayman', isFired: false \}\par
+\{ FirstName: 'omar', LastName: 'abdelaziz', isFired: false \}\par
+///\par
+db.student.updateOne(\{"FirstName":"Sarah"\},\{$set:\{"LastName":"Ahmed"\}\})\par
+//\par
+db.student.remove(\{"FirstName":"Sarah"\})\par
+//\par
+db.student.drop()\par
+true\par
+//\par
+db.dropDatabase()\par
+\{ ok: 1, dropped: 'FacultySystemDB' \}\par
+//\par
+use FacultySystemV2\par
+'switched to db FacultySystemV2'\par
+\par
+\par
+\par
+}
+ 
